@@ -11,6 +11,8 @@ import { syncHistoryWithStore } from 'mobx-react-router'
 import { Provider } from 'mobx-react'
 import State from './state'
 
+import Todo from './component/example/Todo'
+
 const state = new State()
 
 const browserHistory = createBrowserHistory()
@@ -32,6 +34,8 @@ const App: React.FC = () => {
         <Route path="/class-counter-2" component={ClassCounter2} />
         <Route path="/functional-counter" component={FunctionalCounter} />
       </Router>
+      <br />
+      <Todo />
     </Provider>
   )
 }
