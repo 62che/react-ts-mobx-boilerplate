@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 
-import CounterState from '../../state/example/counter'
+import RootStore from 'store'
+import CounterStore from 'store/example/counter'
 
 interface Props {
-  counter?: CounterState  // props로 전달되지 않고 inject되기 때문에 ? 필요
+  counter?: CounterStore // props로 전달되지 않고 inject되기 때문에 ? 필요
 }
 
-@inject('counter')
+// @inject('counter') // valid with store.counter
+@inject((store: RootStore) => ({
+  counter: store.example.counter
+}))
 @observer
 export default class ClassCounter2 extends Component<Props> {
   render() {

@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx'
-import RootState from '../index'
+
+import RootStore from '..'
 
 interface Todo {
   id: number
@@ -7,18 +8,16 @@ interface Todo {
   name: string
 }
 
-export default class TodoState {
-  root: RootState
-  id: number
+export default class TodoStore {
+  private root: RootStore
+  private id: number
 
-  @observable todos: Todo[];
+  @observable todos: Todo[]
 
-  constructor(root: RootState) {
+  constructor(root: RootStore) {
     this.root = root
     this.id = 1
-    this.todos = [
-      { id: 1, name: 'Sample', done: false }
-    ]
+    this.todos = [{ id: 1, name: 'Sample', done: false }]
   }
 
   @action insert = (name: string) => this.todos.push({ id: ++this.id, done: false, name })

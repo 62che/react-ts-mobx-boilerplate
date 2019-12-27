@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { observable, action, computed } from 'mobx'
 import { observer } from 'mobx-react'
-import { delay } from '../../lib/util'
+
+import { delay } from 'lib/util'
 
 interface Props {
   initial: number
@@ -19,7 +20,7 @@ export default class ClassCounter extends Component<Props, State> {
 
   @observable value = this.props.initial
 
-  @computed get doubledValue () {
+  @computed get doubledValue() {
     return this.value * 2
   }
 

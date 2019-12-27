@@ -1,17 +1,19 @@
 import { observable, action, computed } from 'mobx'
-import { delay } from '../../lib/util'
-import RootState from '../index'
 
-export default class CounterState {
-  root: RootState
+import { delay } from 'lib/util'
 
-  @observable value = 0;
+import RootStore from '..'
 
-  constructor(root: RootState) {
+export default class CounterStore {
+  private root: RootStore
+
+  @observable value = 0
+
+  constructor(root: RootStore) {
     this.root = root
   }
 
-  @computed get doubledValue () {
+  @computed get doubledValue() {
     return this.value * 2
   }
 

@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 
-import useStore from '../../lib/hook'
-import TodoState from '../../state/example/todo'
+import { useStore } from 'lib/hook'
+import RootStore from 'store'
+import TodoStore from 'store/example/todo'
 
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
-  default: {
-  },
+  default: {},
   done: {
     textDecorationLine: 'line-through'
   }
 })
 
 const Todo: React.FC = observer(() => {
-  const store = useStore()
-  const todo: TodoState = store.todo
+  const store: RootStore = useStore()
+  const todo: TodoStore = store.example.todo
 
   const [name, setName] = useState('')
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)
@@ -39,10 +39,7 @@ const Todo: React.FC = observer(() => {
       <ul>
         {todo.todos.map(t => {
           return (
-            <li
-              key={t.id}
-              className={t.done ? styles.done : styles.default}
-            >
+            <li key={t.id} className={t.done ? styles.done : styles.default}>
               {t.id}&nbsp;
               {t.name}&nbsp;
               <button onClick={() => todo.toggle(t.id)}>v</button>&nbsp;
