@@ -9,15 +9,15 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 
 import RootStore from 'store'
 
-const store = new RootStore()
+const rootStore = new RootStore()
 const hashHistory: History = createHashHistory()
-const history = syncHistoryWithStore(hashHistory, store.router)
+const history = syncHistoryWithStore(hashHistory, rootStore.router)
 
 if (process.env.NODE_ENV !== 'test') {
   console.log('Debug info : ___debug')
   console.log(process.env)
   ;(window as any).___debug = {
-    store,
+    rootStore,
     history,
     env: process.env
   }
@@ -36,7 +36,7 @@ interface Props {}
 
 const Injector: React.FC<Props> = ({ children }) => {
   return (
-    <Provider {...store}>
+    <Provider {...rootStore}>
       <Router history={history}>
         <ThemeProvider theme={globalTheme}>
           <CssBaseline />

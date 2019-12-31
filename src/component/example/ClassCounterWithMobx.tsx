@@ -9,11 +9,9 @@ interface Props {
 }
 
 // @inject('counter') // valid with store.counter
-@inject((store: RootStore) => ({
-  counter: store.example.counter
-}))
+@inject((rootStore: RootStore) => ({ counter: rootStore.example.counter }))
 @observer
-export default class ClassCounter2 extends Component<Props> {
+export default class ClassCounterWithMobx extends Component<Props> {
   render() {
     const counter = this.props.counter! // 선언이 ?이기 때문에 ! assertion 필요
 

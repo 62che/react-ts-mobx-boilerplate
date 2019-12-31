@@ -16,8 +16,8 @@ const useStyles = makeStyles({
 })
 
 const FunctionalCounter: React.FC = observer(() => {
-  const store: RootStore = useStore()
-  const counter: CounterStore = store.example.counter
+  const rootStore: RootStore = useStore()
+  const counter: CounterStore = rootStore.example.counter
 
   const styles = useStyles()
 

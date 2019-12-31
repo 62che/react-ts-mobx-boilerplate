@@ -10,7 +10,7 @@ import RootStore from 'store'
 import RouterStore from 'store/router'
 
 import ClassCounter from 'component/example/ClassCounter'
-import ClassCounter2 from 'component/example/ClassCounter2'
+import ClassCounterWithMobx from 'component/example/ClassCounterWithMobx'
 import FunctionalCounter from 'component/example/FunctionalCounter'
 
 const useStyles = makeStyles((theme: Theme) => {
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme: Theme) => {
 })
 
 const Main: React.FC = () => {
-  const store: RootStore = useStore()
-  const router: RouterStore = store.router
+  const rootStore: RootStore = useStore()
+  const router: RouterStore = rootStore.router
 
   const styles = useStyles()
 
@@ -36,7 +36,7 @@ const Main: React.FC = () => {
         Button
       </Button>
       <ClassCounter initial={10} />
-      <ClassCounter2 />
+      <ClassCounterWithMobx />
       <FunctionalCounter />
       <Box bgcolor="primary.main" m={1} height="10em">
         Some Box

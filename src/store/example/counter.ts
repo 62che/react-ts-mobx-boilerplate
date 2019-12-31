@@ -5,12 +5,12 @@ import { delay } from 'lib/util'
 import RootStore from '..'
 
 export default class CounterStore {
-  private root: RootStore
+  private rootStore: RootStore
 
   @observable value = 0
 
-  constructor(root: RootStore) {
-    this.root = root
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore
   }
 
   @computed get doubledValue() {

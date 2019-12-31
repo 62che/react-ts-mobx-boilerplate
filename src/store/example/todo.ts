@@ -9,13 +9,13 @@ interface Todo {
 }
 
 export default class TodoStore {
-  private root: RootStore
+  private rootStore: RootStore
   private id: number
 
   @observable todos: Todo[]
 
-  constructor(root: RootStore) {
-    this.root = root
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore
     this.id = 1
     this.todos = [{ id: 1, name: 'Sample', done: false }]
   }
